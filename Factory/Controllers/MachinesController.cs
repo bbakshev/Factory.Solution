@@ -71,29 +71,29 @@ namespace Factory.Controllers
 
     public ActionResult Edit(int id)
     {
-      Movie thisMovie = _db.Movies.FirstOrDefault(movies => movies.MovieId == id);
-      return View(thisMovie);
+      Machine thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
+      return View(thisMachine);
     }
 
     [HttpPost]
-    public ActionResult Edit(Movie movie)
+    public ActionResult Edit(Machine machine)
     {
-      _db.Movies.Update(movie);
+      _db.Machines.Update(machine);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Delete(int id)
     {
-      Movie thisMovie = _db.Movies.FirstOrDefault(movies => movies.MovieId == id);
-      return View(thisMovie);
+      Machine thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
+      return View(thisMachine);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      Movie thisMovie = _db.Movies.FirstOrDefault(movies => movies.MovieId == id);
-      _db.Movies.Remove(thisMovie);
+      Machine thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
+      _db.Machines.Remove(thisMachine);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
@@ -101,8 +101,8 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
     {
-      CustomerMovie joinEntry = _db.CustomerMovies.FirstOrDefault(entry => entry.CustomerMovieId == joinId);
-      _db.CustomerMovies.Remove(joinEntry);
+      EngineerMachine joinEntry = _db.EngineerMachines.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
+      _db.EngineerMachines.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
