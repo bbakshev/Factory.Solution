@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h2>Edit</h2>
+
+<p>Edit this machine's information: @Html.DisplayFor(model => model.Name)</p>
+
+@using (Html.BeginForm())
+{
+  <p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600; color:red;" })</p>
+  <p>@Html.LabelFor(model => model.Name)</p>
+  <p>@Html.TextBoxFor(model => model.Name)</p>
+
+  <p>@Html.Label("Inspection Date")</p>
+  <p>@Html.EditorFor(model => model.InspectionDate)</p>
+  <br><br>
+
+  <input type="submit" value="Add Machine" class="btn btn-primary" />
+}
+
+<br>
+<div id="nav-links">
+  <p>@Html.ActionLink("Back to list of Machines", "Index")</p>
+</div>

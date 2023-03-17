@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h4>Add a new Machine</h4>
+
+@using (Html.BeginForm())
+{
+    <p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600; color:red;" })</p>
+    <p>@Html.LabelFor(model => model.Name)</p>
+    <p>@Html.TextBoxFor(model => model.Name)</p>
+
+    <p>@Html.Label("Inspection Date")</p>
+    <p>@Html.EditorFor(model => model.InspectionDate)</p>
+
+
+    
+    @Html.Label("Add a engineer")
+    @Html.DropDownList("EngineerId")
+
+    <input type="submit" value="Add new Machine" class="btn btn-default" />
+}
+
+<br>
+<div id="nav-links">
+  <p>@Html.ActionLink("Back to list of Machines", "Index")</p>
+</div>
