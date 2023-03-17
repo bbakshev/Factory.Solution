@@ -1,0 +1,23 @@
+body {
+  background-color: honeydew;
+}
+
+div#main-text{
+  margin-top: 30px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+div#nav-links{
+  text-align: center;
+}
+
+div#footer {
+  position:fixed;
+  bottom:0px;
+  left:0px;
+  width:100%;
+  color:aqua;
+  background: rgb(35, 59, 59);
+  padding:8px;
+}
