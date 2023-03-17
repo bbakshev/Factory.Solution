@@ -77,7 +77,7 @@ namespace Factory.Controllers
 #nullable disable
       if (joinEntity == null && machineId != 0)
       {
-        _db.EngineerMachines.Add(new EngineerMachine() { MachineId = machineId, EngineerId = eng.EngineerId });
+        _db.EngineerMachine.Add(new EngineerMachine() { MachineId = machineId, EngineerId = eng.EngineerId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = eng.EngineerId });

@@ -13,27 +13,27 @@
 <hr/>
 
 <h3>Assigned Machines</h3>
-  @if (Model.JoinEntities.Count == 0)
+@if (Model.JoinEntities.Count() == 0)
+{
+  <li>No machines assigned</li>
+}
+else
+{
+  <p>This engineer has the following machines:</p>
+  <ul>
+  @foreach (EngineerMachine join in Model.JoinEntities)
   {
-    <li>No machines assigned</li>
-  }
-  else
-  {
-    <p>This engineer has the following machines:</p>
-    <ul>
-    foreach (EngineerMachine join in Model.JoinEntities)
+    <li>
+      Machines: @join.Machine.Name
+    </li>
+    @using (Html.BeginForm("DeleteJoin", "Engineers"))
     {
-      <li>
-        Machines: @join.Machine.Name
-      </li>
-      @using (Html.BeginForm("DeleteJoin", "Engineers"))
-      {
-        @Html.Hidden("joinId", join.EngineerMachineId)
-        <input type="submit" value="Delete" />
-      }
+      @Html.Hidden("joinId", join.EngineerMachineId)
+      <input type="submit" value="Delete" />
     }
-    </ul>
   }
+  </ul>
+}
 
   <br>
 <div id="nav-links">
