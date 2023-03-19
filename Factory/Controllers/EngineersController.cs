@@ -34,9 +34,12 @@ namespace Factory.Controllers
       {
         return View(eng);
       }
-      _db.Engineers.Add(eng);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      else
+      {
+        _db.Engineers.Add(eng);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
 
     public ActionResult Edit(int id)
@@ -73,11 +76,11 @@ namespace Factory.Controllers
     public ActionResult AddMachine(Engineer eng, int machineId)
     {
 #nullable enable
-      EngineerMachine? joinEntity = _db.EngineerMachine.FirstOrDefault(join => (join.MachineId == machineId && join.EngineerId == eng.EngineerId));
+      EngineerMachine? joinEntity = _db.EngineerMachines.FirstOrDefault(join => (join.MachineId == machineId && join.EngineerId == eng.EngineerId));
 #nullable disable
       if (joinEntity == null && machineId != 0)
       {
-        _db.EngineerMachine.Add(new EngineerMachine() { MachineId = machineId, EngineerId = eng.EngineerId });
+        _db.EngineerMachines.Add(new EngineerMachine() { MachineId = machineId, EngineerId = eng.EngineerId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = eng.EngineerId });
